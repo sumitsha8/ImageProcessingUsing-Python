@@ -1,0 +1,74 @@
+Image Capturing from Webcam Python Code
+
+#Importing OpenCV package
+import cv2
+
+# Setting the Camera capturing into cam 
+cam = cv2.VideoCapture(0)
+#Creating a window named as test For capturing the photo
+ cv2.namedWindow("test")
+
+# Starting the image capturing from 0
+img_counter = 0
+
+# While Condition (True)
+while True:
+
+#Returning the cam variable and reading into frame 
+ret, frame = cam.read()
+
+# Calling the frame variable and displaying it.
+cv2.imshow("frame", frame) 
+
+# If it’s not return then break	
+if not ret: 
+	
+        break
+# setting the window to wait until the any key are pressed
+    k = cv2.waitKey(1) 
+
+# If condition stating that if 27 ASCII value i.e ESC is pressed than it will close the Test window
+    56if k%256 == 27:   
+        # ESC pressed
+        print("Escape hit, closing...")
+        break
+# Else if 32 ASCII value i.e Space is pressed than the picture will be captured
+    elif k%256 == 32:    
+        # SPACE pressed
+# Saving the captured image in img_name variable
+        img_name = "opencv_frame_{}.png".format(img_counter)
+
+# Writing that image into pyton folder	
+      cv2.imwrite(img_name, frame) 
+		
+# displaying text once the image is captured
+
+        print("{} written!".format(img_name)) 
+
+# increasing the img_counter by 1
+
+        img_counter += 1  
+# once the image is captured the cam will be released
+cam.release() 
+
+# After capturing it will distroy the running window
+cv2.destroyAllWindows() 
+
+
+
+Converting RGB image to Grayscale Image
+
+# importing OpenCV package
+import cv2 
+
+#reading the image from storage
+img = cv2.imread('C:/Users/Jeet/Desktop/image/TT.jpg') 
+
+#coverting the input image to grayscale image
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+#imshow is use for displaying the converted image
+cv2.imshow('image', img)
+
+# saving the output image to the given location
+cv2.imwrite('C:/Users/Jeet/Desktop/image/Test_gray1.png', img_gray) 
